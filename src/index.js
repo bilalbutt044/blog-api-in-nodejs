@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import userRoute from "./router/user.js";
 import postRoute from "./router/posts.js";
 import commentRoute from "./router/comment.js";
+import categoryRoute from "./router/category.js";
 import mongoose from "mongoose";
 
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/user", userRoute);
 app.use("/posts", postRoute);
 app.use("/comments", commentRoute);
+app.use("/category", categoryRoute);
 
 mongoose.connect(process.env.DB_CONNECTION, () =>
   console.log("mongodb connected")

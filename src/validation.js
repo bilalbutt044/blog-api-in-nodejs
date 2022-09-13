@@ -37,3 +37,13 @@ export const commentValidation = (body) => {
 
   return schema.validate(body);
 };
+export const categoryValidation = (body) => {
+  const schema = Joi.object({
+    content: Joi.string().max(75).required(),
+    title: Joi.string().min(5).max(75).required(),
+    metaTitle: Joi.string().min(5).max(100),
+    slug: Joi.string().min(5).max(100),
+  });
+
+  return schema.validate(body);
+};
