@@ -28,3 +28,12 @@ export const postValidation = (body) => {
 
   return schema.validate(body);
 };
+export const commentValidation = (body) => {
+  const schema = Joi.object({
+    content: Joi.string().max(75).required(),
+    createdAt: Joi.date().required(),
+    publishedAt: Joi.date().required(),
+  });
+
+  return schema.validate(body);
+};
