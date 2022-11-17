@@ -24,6 +24,7 @@ export const postValidation = (body) => {
     updatedAt: Joi.date().required(),
     publishedAt: Joi.date().required(),
     content: Joi.string().required(),
+    user: Joi.string().hex().length(24).required(),
   });
 
   return schema.validate(body);

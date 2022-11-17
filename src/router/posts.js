@@ -6,9 +6,12 @@ const route = express.Router();
 
 route.get("/", async (req, res) => {
   try {
-    const post = await Post.find();
-    res.send(post);
+    const posts = await Post.find().populate("user").exec();
+    // await posts.populate("user").execPopulate();
+    console.log(posts);
+    res.send(posts);
   } catch (error) {
+    console.log(error);
     res.status(400).send({ error });
   }
 });
@@ -31,6 +34,7 @@ route.post("/", async (req, res) => {
 
     const post = new Post({ ...req.body });
     await post.save();
+
     res.send(post);
   } catch (error) {
     res.status(400).send({ error });
